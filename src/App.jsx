@@ -3,6 +3,8 @@ import Body from "./components/Body";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Login from "./components/Login";
+import Landing from "./components/Landing";
+import Signup from "./components/Signup";
 
 
 function App() {
@@ -12,8 +14,10 @@ function App() {
       <Provider store={appStore}>
         <BrowserRouter basename="/">
           <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path= "/signup" element={<Signup/>}/>
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Body />} />
+            <Route path="/body" element={<Body/>}/>
           </Routes>
         </BrowserRouter>
       </Provider>
