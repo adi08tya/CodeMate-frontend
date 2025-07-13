@@ -1,5 +1,9 @@
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const user = useSelector((store)=>store.user);
+  console.log(user);
+  
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="flex-1">
@@ -13,10 +17,10 @@ const Navbar = () => {
             className="btn btn-ghost btn-circle avatar"
           >
             <div className="w-10 rounded-full">
-              <img
+              {user && <img
                 alt="Tailwind CSS Navbar component"
                 src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
+              />}
             </div>
           </div>
           <ul
