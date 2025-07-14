@@ -1,10 +1,24 @@
 import { FaCode } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
+import axios from "axios";
+import { removeUser } from "../utils/userSlice";
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
-  console.log(user);
-
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const handleLogout=async()=>{
+    try {
+      await axios.post(BASE_URL+"/auth/logout",{},{withCredentials:true})
+      dispatch(removeUser());
+      navigate("/login",{viewTransition:true})
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
   return (
     <div className="navbar bg-gray-900/90 backdrop-blur-sm border-b border-gray-700/50 shadow-lg">
       <div className="flex-1">
@@ -34,19 +48,19 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-gray-800 rounded-lg z-50 mt-3 w-52 p-2 shadow-xl border border-gray-700/50"
           >
             <li>
-              <a className="text-gray-300 hover:text-white hover:bg-gray-700/50">
+              <Link to="/profile" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
                 Profile
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="text-gray-300 hover:text-white hover:bg-gray-700/50">
+              <Link to="/settings" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
                 Settings
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="text-gray-300 hover:text-white hover:bg-gray-700/50">
+              <Link onClick={handleLogout} className="text-gray-300 hover:text-white hover:bg-gray-700/50">
                 Logout
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
