@@ -48,12 +48,12 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-gray-800 rounded-lg z-50 mt-3 w-52 p-2 shadow-xl border border-gray-700/50"
           >
             <li>
-              <Link to="/profile" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
+              <Link to="/body/profile" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
                 Profile
               </Link>
             </li>
             <li>
-              <Link to="/settings" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
+              <Link to="/body/settings" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
                 Settings
               </Link>
             </li>

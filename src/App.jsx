@@ -6,20 +6,23 @@ import Login from "./components/Login";
 import Landing from "./components/Landing";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
-
+import Feed from "./components/Feed";
+import EditProfile from "./components/EditProfile";
 
 function App() {
-
   return (
     <>
       <Provider store={appStore}>
         <BrowserRouter basename="/">
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path= "/signup" element={<Signup/>}/>
+            <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/body" element={<Body/>}/>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/body" element={<Body />}>
+              <Route path="feed" element={<Feed />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path ="editprofile" element={<EditProfile/>}/>
+            </Route>
           </Routes>
         </BrowserRouter>
       </Provider>
@@ -27,4 +30,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

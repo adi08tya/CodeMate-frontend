@@ -12,24 +12,23 @@ import {
   FaLock,
   FaRocket,
 } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("elon@tesla.com");
   const [password, setPassword] = useState("Elon@123");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     if (!emailId || !password) {
-      setError("Please fill in all fields");
+      toast.error("Please fill in all fields");
       return;
     }
 
     setIsLoading(true);
-    setError("");
 
     try {
       const res = await axios.post(
@@ -42,11 +41,12 @@ const Login = () => {
           withCredentials: true,
         }
       );
+       toast.success("Login Successful"); 
       dispatch(addUser(res.data));
       navigate("/body");
     } catch (error) {
       console.log(error);
-      setError("Invalid email or password. Please try again.");
+      toast.error("Invalid email or password. Please try again.")
     } finally {
       setIsLoading(false);
     }
@@ -76,12 +76,6 @@ const Login = () => {
 
         {/* Login Card */}
         <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-gray-700/50">
-          {/* Error Message */}
-          {error && (
-            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="text-red-400 text-sm">{error}</p>
-            </div>
-          )}
 
           {/* Login Form */}
           <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
