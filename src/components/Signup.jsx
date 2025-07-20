@@ -13,16 +13,19 @@ import {
   FaArrowLeft,
 } from "react-icons/fa";
 import { MdOutlineArrowDropDown } from "react-icons/md";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
+    emailId: "",
     password: "",
     confirmPassword: "",
-    age: "",
+    age:"",
     gender: "",
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -32,7 +35,7 @@ const Signup = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
+    setFormData((prev) => ({ 
       ...prev,
       [name]: value,
     }));
@@ -64,10 +67,10 @@ const Signup = () => {
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+    if (!formData.emailId) {
+      newErrors.emailId = "Email is required";
+    } else if (!emailRegex.test(formData.emailId)) {
+      newErrors.emailId = "Please enter a valid email address";
     }
 
     // Password validation
@@ -113,15 +116,15 @@ const Signup = () => {
     setIsLoading(true);
 
     try {
-      // Here you would typically make an API call to register the user
-      // For now, we'll simulate the registration process
-      console.log("Registration data:", formData);
-
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Navigate to login page after successful registration
-      navigate("/login",{viewTransition:true});
+      // Ensure age is sent as a number
+      const payload = { ...formData, age: Number(formData.age) };
+      console.log("Registration data:", payload);
+      const res = await axios.post(BASE_URL + "/auth/signup", payload, {
+        withCredentials: true,
+      });
+      console.log(res);
+      toast.success("Account Created Succesfully");
+      navigate("/login", { viewTransition: true });
     } catch (error) {
       console.error("Registration error:", error);
       setErrors({ general: "Registration failed. Please try again." });
@@ -229,17 +232,17 @@ const Signup = () => {
                 </div>
                 <input
                   type="email"
-                  name="email"
-                  value={formData.email}
+                  name="emailId"
+                  value={formData.emailId}
                   className={`w-full pl-10 pr-4 py-3 bg-gray-700/50 border rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                    errors.email ? "border-red-500" : "border-gray-600/50"
+                    errors.emailId ? "border-red-500" : "border-gray-600/50"
                   }`}
                   placeholder="Enter your email"
                   onChange={handleInputChange}
                 />
               </div>
-              {errors.email && (
-                <p className="text-red-400 text-sm mt-1">{errors.email}</p>
+              {errors.emailId && (
+                <p className="text-red-400 text-sm mt-1">{errors.emailId}</p>
               )}
             </div>
 

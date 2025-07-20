@@ -11,13 +11,10 @@ const Feed = () => {
   const getFeed = async (page = 1, limit = 30) => {
     if (feed && feed.length > 0) return;
     try {
-      const res = await axios.get(
-        BASE_URL + "/user/feed",
-        {
-          params:{limit,page},
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get(BASE_URL + "/user/feed", {
+        params: { limit, page },
+        withCredentials: true,
+      });
       console.log("Fetched feed data:", res.data);
       dispatch(addFeed(res.data));
     } catch (error) {
@@ -31,12 +28,7 @@ const Feed = () => {
   return (
     <div className="flex flex-col justify-center items-center my-10">
       {feed.length !== 0 &&
-        feed.map((user) => (
-            <Usercard
-            key={user._id}
-             user={user}
-            />
-        ))}
+        feed.map((user) => <Usercard key={user._id} user={user} />)}
     </div>
   );
 };
