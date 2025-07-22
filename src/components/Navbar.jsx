@@ -141,6 +141,13 @@ const Navbar = () => {
                     >
                       Connections
                     </Link>
+                    <Link
+                      to="/body/requests"
+                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors"
+                      onClick={closeMenus}
+                    >
+                      Requests
+                    </Link>
                     <hr className="border-gray-700 my-1" />
                     <button
                       onClick={handleLogout}

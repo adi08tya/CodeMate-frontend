@@ -31,9 +31,11 @@ const Body = () => {
   }, [userData, fetchUser]);
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <Outlet />
+      <div className="pt-16">
+        <Outlet />
+      </div>
     </div>
   );
 };

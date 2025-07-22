@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import bgimg from "../assets/landingbg.png";
+import { Link } from "react-router-dom";
 import {
   FaCode,
   FaRocket,
@@ -29,12 +29,7 @@ const Landing = () => {
     <>
       <Navbar />
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black">
-        <div
-          className="min-h-screen relative bg-cover bg-center bg-no-repeat flex items-center justify-center"
-          style={{
-            backgroundImage: `url(${bgimg})`,
-          }}
-        >
+        <div className="min-h-screen relative bg-cover bg-center bg-no-repeat flex items-center justify-center">
           {/* Overlay */}
           <div className="absolute inset-0 bg-black bg-opacity-70"></div>
 
@@ -167,39 +162,39 @@ const Landing = () => {
               </div>
 
               <div>
-                <h3 className="font-semibold mb-4 text-gray-100">Platform</h3>
+                <h3 className="font-semibold mb-4 text-gray-100">Company</h3>
                 <ul className="space-y-2 text-gray-400">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="/about"
                       className="hover:text-gray-200 transition-colors"
                     >
-                      Features
-                    </a>
+                      About Us
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="/careers"
                       className="hover:text-gray-200 transition-colors"
                     >
-                      How it Works
-                    </a>
+                      Careers
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="/blog"
                       className="hover:text-gray-200 transition-colors"
                     >
-                      Pricing
-                    </a>
+                      Blog
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="/press"
                       className="hover:text-gray-200 transition-colors"
                     >
-                      Success Stories
-                    </a>
+                      Press
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -208,36 +203,36 @@ const Landing = () => {
                 <h3 className="font-semibold mb-4 text-gray-100">Support</h3>
                 <ul className="space-y-2 text-gray-400">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="/help"
                       className="hover:text-gray-200 transition-colors"
                     >
                       Help Center
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="/contact"
                       className="hover:text-gray-200 transition-colors"
                     >
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="/terms"
                       className="hover:text-gray-200 transition-colors"
                     >
-                      Community Guidelines
-                    </a>
+                      Terms of Service
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="/privacy"
                       className="hover:text-gray-200 transition-colors"
                     >
                       Privacy Policy
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -246,19 +241,22 @@ const Landing = () => {
                 <h3 className="font-semibold mb-4 text-gray-100">Connect</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
+                    href="https://github.com/"
+                    target="_blank"
                     className="text-gray-400 hover:text-gray-200 transition-colors"
                   >
                     <FaGithub className="text-xl" />
                   </a>
                   <a
-                    href="#"
+                    href="https://linkedin.com/"
+                    target="_blank"
                     className="text-gray-400 hover:text-gray-200 transition-colors"
                   >
                     <FaLinkedin className="text-xl" />
                   </a>
                   <a
-                    href="#"
+                    href="https://twitter.com/"
+                    target="_blank"
                     className="text-gray-400 hover:text-gray-200 transition-colors"
                   >
                     <FaTwitter className="text-xl" />

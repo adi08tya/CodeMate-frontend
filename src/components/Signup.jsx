@@ -116,9 +116,7 @@ const Signup = () => {
     setIsLoading(true);
 
     try {
-      // Ensure age is sent as a number
       const payload = { ...formData, age: Number(formData.age) };
-      console.log("Registration data:", payload);
       const res = await axios.post(BASE_URL + "/auth/signup", payload, {
         withCredentials: true,
       });

@@ -8,8 +8,8 @@ const feedSlice  = createSlice({
         addFeed:(state,action)=>{
             return action.payload;
         },
-        removeFeed:(state,action)=>{
-            return null;
+        removeFeed:()=>{
+            return [];
         }
     }
 })
